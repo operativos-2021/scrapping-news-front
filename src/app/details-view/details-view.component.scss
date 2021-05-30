@@ -1,0 +1,92 @@
+.my-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  bottom: 2vh;
+  top: 12vh;
+  margin-left: 0;
+  min-height: 88vh;
+  overflow: hidden;
+  width: 100vw;
+  justify-content: space-between;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed;
+  background-image: url("../../assets/background.jpg");
+}
+
+.specifics {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 40%;
+}
+
+.jumbotron {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 98%;
+  margin-left: 2%;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 1%;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  transition: 0.25s;
+  width: 70%;
+  justify-content: space-around;
+  background-color: white;
+}
+
+.my-icon {
+  width: 3em;
+  height: 3em;
+  display: inline-block;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+pre {
+  margin: 0;
+  font-size: 1em;
+  font-family: var(--bs-font-sans-serif) !important;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+h4 {
+  width: 98%;
+  margin-left: 2%;
+  border-radius: 10px;
+  background: white;
+  padding: 0.5%;
+  text-align: center;
+}
+
+.info {
+  background-color: white;
+  display: flex;
+  overflow: auto;
+  height: 80vh;
+  padding: 0.5%;
+  margin-right: 0.5%;
+  width: 55%;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.25);
+}
+

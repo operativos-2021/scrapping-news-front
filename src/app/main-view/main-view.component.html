@@ -1,0 +1,26 @@
+<div class="my-container">
+  <div *ngFor="let new of newService.all_news" class="card">
+    <h5 class="card-header">{{ new.date }}</h5>
+    <img [src]="new.image" class="card-img-top" alt="new_img" />
+    <div class="card-body">
+      <h5 class="card-title">{{ new.title }}</h5>
+      <p class="card-text">{{ new.description }}</p>
+      <a [routerLink]="['/details/' + new.title]" class="btn btn-outline-primary">
+        Detalles
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-chevron-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
