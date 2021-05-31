@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NewsService } from '../global/news.service';
+import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts'
+import { ChartOptions, ChartType } from 'chart.js';
+
 
 @Component({
   selector: 'app-details-view',
@@ -15,10 +18,26 @@ export class DetailsViewComponent implements OnInit {
   new_id: any;
   subscription: Subscription = new Subscription;
 
+  chartOptions = {
+    responsive: true,
+  };
+
+  pieChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  chartLabels: Label[] = ["Deportes", "Salud", "Economía", "Política", "Tecnología"];
+  chartData: SingleDataSet = [50, 10, 5, 15, 20];
+  chartType: ChartType = 'pie';
+  chartLegend = true;
+  chartPlugins = [];
+
   constructor(
     private route: ActivatedRoute,
     public newService: NewsService
-  ) { }
+  ) {
+    monkeyPatchChartJsTooltip();
+    monkeyPatchChartJsLegend();
+   }
 
   ngOnInit(): void {
     this.subscription = this.route.paramMap.subscribe((params) => {

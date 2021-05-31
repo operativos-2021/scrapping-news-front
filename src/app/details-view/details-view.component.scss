@@ -1,7 +1,7 @@
 .my-container {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   bottom: 2vh;
   top: 12vh;
   margin-left: 0;
@@ -17,24 +17,18 @@
 
 .specifics {
   width: 40%;
+  height: 80vh;
   display: flex;
   flex-direction: column;
 }
 
-.navbar {
-  position: absolute;
-  top: 0;
-  width: 40%;
-}
-
 .jumbotron {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  width: 98%;
-  margin-left: 2%;
+  width: 100%;
   border-radius: 5px;
-  background-color: white;
+  display: flex;
+  margin: auto;
+  margin-bottom: 5%;
+
 }
 
 .navbar-brand {
@@ -51,8 +45,8 @@
 }
 
 .my-icon {
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
   display: inline-block;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -65,13 +59,14 @@ pre {
 }
 
 img {
-  width: 100%;
+  margin: auto;
+  width: 80%;
   border-radius: 10px;
 }
 
 h4 {
-  width: 98%;
-  margin-left: 2%;
+  width: 80%;
+  margiN: auto;
   border-radius: 10px;
   background: white;
   padding: 0.5%;
@@ -79,14 +74,32 @@ h4 {
 }
 
 .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85vh;
+  margin-right: 1%;
+  width: 50%;
+}
+
+.new-description {
+  width: 100%;
+  padding: 2%;
+  text-align: justify;
+  overflow: auto;
+  height: 70vh;
   background-color: white;
   display: flex;
-  overflow: auto;
-  height: 80vh;
-  padding: 0.5%;
-  margin-right: 0.5%;
-  width: 55%;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.25);
 }
 
+.chart-wrapper {
+  width: 100%;
+}
+
+canvas {
+  margin-top: 2%;
+  margin: auto;
+  width: 100% !important;
+}

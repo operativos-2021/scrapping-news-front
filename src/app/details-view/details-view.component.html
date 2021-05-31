@@ -1,25 +1,38 @@
 <div class="my-container">
-    <div class="specifics">
-        <nav class="navbar">
-            <a class="navbar-brand">
-              <i
-                class="my-icon"
-                [style.background-image]="'url(' + newIcon + ')'"
-              ></i>
-              <pre>{{ myNew.category }}</pre>
-              <pre>{{ myNew.date }}</pre>
-            </a>
-          </nav>
-
-          <h4>{{ myNew.title }}</h4>
-
-          <div class="jumbotron jumbotron-fluid">
-            <img [src]="myNew.image" alt="" />
-          </div>
+  <div class="specifics">
+    <nav class="navbar">
+      <a class="navbar-brand">
+        <i
+          class="my-icon"
+          [style.background-image]="'url(' + newIcon + ')'"
+        ></i>
+        <pre>{{ myNew.category }}</pre>
+        <pre>{{ myNew.date }}</pre>
+      </a>
+    </nav>
+    
+    <div class="jumbotron jumbotron-fluid">
+      <img [src]="myNew.image" alt="" />
     </div>
 
+    <div class="chart-wrapper">
+      <canvas
+        baseChart
+        [data]="chartData" 
+        [labels]="chartLabels" 
+        [chartType]="chartType"
+        [options]="chartOptions"
+        [plugins]="chartPlugins"
+        [legend]="chartLegend">
+      >
+      </canvas>
+    </div>
+  </div>
 
   <div class="info">
-    <p>{{ myNew.description }}</p>
+    <h4>{{ myNew.title }}</h4>
+    <div class="new-description">
+      <p>{{ myNew.description }}</p>
+    </div>
   </div>
 </div>
