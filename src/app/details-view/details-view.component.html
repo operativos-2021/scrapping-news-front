@@ -6,33 +6,31 @@
           class="my-icon"
           [style.background-image]="'url(' + newIcon + ')'"
         ></i>
-        <pre>{{ myNew.category }}</pre>
-        <pre>{{ myNew.date }}</pre>
+        <pre>{{ myNew.zCategory }}</pre>
+        <pre>{{ myNew.time }}</pre>
       </a>
     </nav>
-    
+
     <div class="jumbotron jumbotron-fluid">
-      <img [src]="myNew.image" alt="" />
+      <img [src]="myNew.img" alt="" />
     </div>
 
     <div class="chart-wrapper">
-      <canvas
-        baseChart
-        [data]="chartData" 
-        [labels]="chartLabels" 
-        [chartType]="chartType"
-        [options]="chartOptions"
-        [plugins]="chartPlugins"
-        [legend]="chartLegend">
-      >
+      <canvas baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
       </canvas>
     </div>
   </div>
 
   <div class="info">
-    <h4>{{ myNew.title }}</h4>
+    <h4>{{ myNew.headline }}</h4>
     <div class="new-description">
-      <p>{{ myNew.description }}</p>
+      <p>{{ myNew.article }}</p>
     </div>
   </div>
 </div>

@@ -2,60 +2,95 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NewsService } from '../global/news.service';
-import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts'
-import { ChartOptions, ChartType } from 'chart.js';
-
+import {
+  SingleDataSet,
+  Label,
+  monkeyPatchChartJsLegend,
+  monkeyPatchChartJsTooltip,
+} from 'ng2-charts';
+import { Chart, ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Category } from '../global/category.type';
 
 @Component({
   selector: 'app-details-view',
   templateUrl: './details-view.component.html',
-  styleUrls: ['./details-view.component.scss']
+  styleUrls: ['./details-view.component.scss'],
 })
 export class DetailsViewComponent implements OnInit {
-
   myNew: any;
-  newIcon: string = "../../assets/sports.png";
+  newIcon: string = '../../assets/sports.png';
   new_id: any;
-  subscription: Subscription = new Subscription;
+  subscription: Subscription = new Subscription();
 
-  chartOptions = {
+  public barChartOptions: ChartOptions = {
     responsive: true,
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            stepSize: 10,
+            max: 50,
+            min: 0,
+          },
+        },
+      ],
+    },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+      },
+    },
   };
+  public barChartLabels: Label[] = [];
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = true;
+  public barChartPlugins = [];
 
-  pieChartOptions: ChartOptions = {
-    responsive: true,
-  };
-  chartLabels: Label[] = ["Deportes", "Salud", "Economía", "Política", "Tecnología"];
-  chartData: SingleDataSet = [50, 10, 5, 15, 20];
-  chartType: ChartType = 'pie';
-  chartLegend = true;
-  chartPlugins = [];
+  public barChartData: ChartDataSets[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    public newService: NewsService
-  ) {
-    monkeyPatchChartJsTooltip();
-    monkeyPatchChartJsLegend();
-   }
+  constructor(private route: ActivatedRoute, public newService: NewsService) {}
 
   ngOnInit(): void {
+    Chart.defaults.global.defaultFontColor = 'white';
+
     this.subscription = this.route.paramMap.subscribe((params) => {
-      this.new_id = params.get("new-id");
-      console.log(this.new_id)
+      this.new_id = params.get('new-id');
+      console.log(this.new_id);
       this.recharge();
-    })
+    });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  recharge(){
-    this.myNew = this.newService.getNew(this.new_id)
-    let category: string = this.myNew.category
-    this.newIcon = this.newService.news_types[category]
-    console.log(category, this.newIcon)
+  recharge() {
+    this.myNew = this.newService.getNew(this.new_id);
+    let category: string = this.myNew.zCategory;
+    category == 'Medicina' ? (category = 'Salud/Medicina') : null;
+    this.newIcon = this.newService.news_types[category];
+    this.getPercentages();
   }
 
+  getPercentages() {
+    let percentages = this.myNew.percentages;
+    console.log(this.myNew);
+
+    let index = 0;
+    percentages.forEach((element: Category) => {
+      let data = [0, 0, 0, 0, 0];
+      data[index] = Math.round(element.concurrence_percentage);
+      element.category == 'Medicina'
+        ? (element.category = 'Salud/Medicina')
+        : null;
+      this.barChartData.push({
+        data: data,
+        label: element.category,
+        stack: 'a',
+      });
+      this.barChartLabels.push(element.category);
+      index++;
+    });
+  }
 }
