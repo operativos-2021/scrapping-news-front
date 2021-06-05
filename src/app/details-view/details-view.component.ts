@@ -56,7 +56,6 @@ export class DetailsViewComponent implements OnInit {
 
     this.subscription = this.route.paramMap.subscribe((params) => {
       this.new_id = params.get('new-id');
-      console.log(this.new_id);
       this.recharge();
     });
   }
@@ -75,8 +74,6 @@ export class DetailsViewComponent implements OnInit {
 
   getPercentages() {
     let percentages = this.myNew.percentages;
-    console.log(this.myNew);
-
     let index = 0;
     percentages.forEach((element: Category) => {
       let data = [0, 0, 0, 0, 0];

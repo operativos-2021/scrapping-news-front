@@ -16,7 +16,6 @@ export class GlobalService {
   ) { }
 
   startUpServer(){
-    console.log('efwfwfe')
     return this.http.post(`${environment.back_url}/clasificator`, null, {observe: 'response'})
   }
 

@@ -22,7 +22,6 @@ export class MainViewComponent implements OnInit {
       this.loading = true
       await this.globalService.startUpServer().toPromise().then(
         (data: any) => {
-          console.log(data)
           this.newService.getNews().subscribe({
             next: (data: any) => {
               let pages = data.data;
