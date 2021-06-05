@@ -62,3 +62,19 @@ h5 {
   align-items: center;
   width: 50%;
 }
+
+.loading {
+  position: absolute;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+::ng-deep .mat-progress-spinner circle,
+::ng-deep .mat-spinner circle {
+  stroke: rgba(84,178,248,255)
+}
