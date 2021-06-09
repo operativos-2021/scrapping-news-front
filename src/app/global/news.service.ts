@@ -19,11 +19,11 @@ export class NewsService {
   all_news: any[] = [];
 
   news_types: any = {
-    'Deporte': '../../assets/sports.png',
-    'Salud/Medicina': '../../assets/health.png',
-    'Economía': '../../assets/economy.png',
-    'Tecnología': '../../assets/technology.png',
-    'Política/Gobierno': '../../assets/politic.png',
+    'Deporte': 'assets/sports.png',
+    'Salud/Medicina': 'assets/health.png',
+    'Economía': 'assets/economy.png',
+    'Tecnología': 'assets/technology.png',
+    'Política/Gobierno': 'assets/politic.png',
   };
 
   constructor(private http: HttpClient, private globalService: GlobalService) {}
