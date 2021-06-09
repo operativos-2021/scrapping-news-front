@@ -21,9 +21,10 @@ export class MainViewComponent implements OnInit {
     if (this.newService.all_news.length == 0){
       this.loading = true
       await this.globalService.startUpServer().toPromise().then(
-        (data: any) => {
+        () => {
           this.newService.getNews().subscribe({
             next: (data: any) => {
+              console.log(data)
               let pages = data.data;
               if (pages.Amelia) 
                 pages.Amelia.forEach(((element: any) => {
@@ -31,7 +32,7 @@ export class MainViewComponent implements OnInit {
                 }))
               
               
-              if(pages.undo)
+              if(pages.Mundo)
                 pages.Mundo.forEach(((element: any) => {
                   this.newService.all_news.push(element)
                 }))
